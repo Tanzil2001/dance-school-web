@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
-import logo from '../assets/dance-logo-dark-1.webp' ;
+import logo from '../assets/dance-logo-dark-1.webp';
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Navber = () => {
-    const {user} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
+
     const navOptions = <>
         <li className="text-xl font-bold"><Link to="/">Home</Link></li>
         <li className="text-xl font-bold"><Link to="/">Instructors</Link></li>
@@ -13,14 +20,14 @@ const Navber = () => {
         {
             user ? <>
                 <li className="text-xl font-bold"><Link>Dashboard </Link></li>
-                <button className="btn btn-ghost">LogOut</button>
-                <img src={user.photoURL} alt="" />
-                <p>{user.displayName}</p>
+                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                <img className="w-16 h-16 rounded-full" src={user.photoURL} alt="" />
             </> : <>
                 <li className="text-xl font-bold"><Link to="/login">Login</Link></li>
             </>
         }
     </>
+
     return (
         <>
             <div className="navbar mt-10  fixed z-10 bg-opacity-0 max-w-screen-xl ml-40 bg-black text-white">
