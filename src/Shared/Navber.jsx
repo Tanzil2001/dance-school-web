@@ -19,7 +19,7 @@ const Navber = () => {
         <li className="text-xl font-bold"><Link to="/order/salad">Classes</Link></li>
         {
             user ? <>
-                <li className="text-xl font-bold"><Link>Dashboard </Link></li>
+                <li className="text-xl font-bold"><Link to="/dashboard">Dashboard </Link></li>
                 <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
             </> : <>
                 <li className="text-xl font-bold"><Link to="/login">Login</Link></li>
@@ -39,7 +39,6 @@ const Navber = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    {/* <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a> */}
                     <img src={logo} alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
