@@ -3,7 +3,7 @@ import logo from '../assets/dance-logo-dark-1.webp' ;
 
 
 const Navber = () => {
-    const user = true;
+    const user = false;
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/">Instructors</Link></li>
@@ -19,7 +19,7 @@ const Navber = () => {
     </>
     return (
         <>
-            <div className="navbar mt-16 fixed z-10 bg-opacity-0 max-w-screen-xl ml-40 bg-black text-white">
+            <div className="navbar mt-10  fixed z-10 bg-opacity-0 max-w-screen-xl ml-40 bg-black text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
