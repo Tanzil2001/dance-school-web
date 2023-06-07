@@ -1,17 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import {FaHome } from "react-icons/fa";
 
 
 const DashboardLayout = () => {
     const isInstructor = false
-    const isAdmin = false
+    const isAdmin = true
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
 
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <Outlet></Outlet>
 
             </div>
             <div className="drawer-side bg-black ">
@@ -20,9 +21,9 @@ const DashboardLayout = () => {
 
                     {isAdmin ? (
                         <li>
-                            <NavLink to="/dashboard/adminhome">
+                            <NavLink to="/dashboard/manageusers">
                                 <FaHome />
-                                Admin Home
+                                Manage Users
                             </NavLink>
                         </li>
                     ) : isInstructor ? (
