@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/dance-logo-dark-1.webp' ;
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Navber = () => {
-    const user = false;
+    const {user} = useContext(AuthContext);
     const navOptions = <>
         <li className="text-xl font-bold"><Link to="/">Home</Link></li>
         <li className="text-xl font-bold"><Link to="/">Instructors</Link></li>
@@ -12,6 +14,8 @@ const Navber = () => {
             user ? <>
                 <li className="text-xl font-bold"><Link>Dashboard </Link></li>
                 <button className="btn btn-ghost">LogOut</button>
+                <img src={user.photoURL} alt="" />
+                <p>{user.displayName}</p>
             </> : <>
                 <li className="text-xl font-bold"><Link to="/login">Login</Link></li>
             </>

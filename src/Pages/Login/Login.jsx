@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cover1 from '../../assets/signup-cover.avif';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { FaGoogle } from "react-icons/fa";
 
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const {signIn, googleSignIn} = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/'
 
     const glassStyle = {
         backgroundColor: 'transparent',
@@ -21,12 +26,23 @@ const Login = () => {
     const onSubmit = data => {
         console.log(data);
         signIn(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
     };
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+    }
+
+
     return (
         <div style={{ backgroundImage: `url(${cover1})` }} className="hero min-h-screen ">
             <div className="hero-content mt-32">
@@ -54,6 +70,12 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-xl font-bold'>Are You New Here? please <Link className='text-blue-600' to="/signup">Register</Link></p>
+                    <div className="divider"></div>
+                    <div className="text-center w-full my-4">
+                        <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline">
+                            <FaGoogle />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
