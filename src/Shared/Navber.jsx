@@ -5,15 +5,15 @@ import logo from '../assets/dance-logo-dark-1.webp' ;
 const Navber = () => {
     const user = false;
     const navOptions = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Instructors</Link></li>
-        <li><Link to="/order/salad">Classes</Link></li>
+        <li className="text-xl font-bold"><Link to="/">Home</Link></li>
+        <li className="text-xl font-bold"><Link to="/">Instructors</Link></li>
+        <li className="text-xl font-bold"><Link to="/order/salad">Classes</Link></li>
         {
             user ? <>
-                <li><Link>Dashboard </Link></li>
+                <li className="text-xl font-bold"><Link>Dashboard </Link></li>
                 <button className="btn btn-ghost">LogOut</button>
             </> : <>
-                <li><Link to="/login">Login</Link></li>
+                <li className="text-xl font-bold"><Link to="/login">Login</Link></li>
             </>
         }
     </>
