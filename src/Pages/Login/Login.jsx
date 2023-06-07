@@ -37,8 +37,20 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
+                const savedUser = { name: loggedUser.displayName, email: loggedUser.email }
                 console.log(loggedUser);
-                navigate(from, { replace: true })
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate(from, { replace: true })
+                    })
+
             })
     }
 
