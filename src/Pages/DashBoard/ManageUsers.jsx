@@ -30,6 +30,26 @@ const ManageUsers = () => {
 
                 }
             })
+    };
+
+    const handleInstructor = (user) => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                }
+            })
     }
     return (
         <div className="w-full">
@@ -42,8 +62,7 @@ const ManageUsers = () => {
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Make Admin</th>
-                            <th>Make Instructor</th>
+                            <th>Role</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,11 +71,11 @@ const ManageUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role === 'admin' ? 'admin' : <button onClick={() => handleAdmin(user)} className="btn text-white">
-                                    <FaUserShield />
-                                </button>}</td>
-                                <td>
-                                    <button>instructor</button>
+                                <td>{user.role === 'admin' ? 'admin' : <button onClick={() => handleAdmin(user)} className="btn bg-black text-white hover:bg-blue-600">
+                                    Make Admin
+                                </button>} <br />
+                                    {user.role === 'instructor' ? 'instructor' : <button onClick={() => handleInstructor(user)} className="btn mt-3 bg-black text-white hover:bg-blue-600">Make Instructor</button>}
+
                                 </td>
                             </tr>)
                         }
