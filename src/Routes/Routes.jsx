@@ -6,34 +6,43 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import ManageUsers from "../Pages/DashBoard/ManageUsers";
+import AdminRoute from "./AdminRoute";
+import InstructorRout from "./InstructorRout";
+import AddaClass from "../Pages/DashBoard/Instructor/AddaClass";
+// import AdminRoute from "./AdminRoute";
 
-export const router  = createBrowserRouter([
+
+export const router = createBrowserRouter([
     {
         path: '/',
-        element: <MainLayout/>,
-        errorElement: <Error/>,
+        element: <MainLayout />,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: '/signup',
-                element: <Register/>
+                element: <Register />
             },
             {
                 path: '/login',
-                element: <Login/>
+                element: <Login />
             }
         ]
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout/>,
+        element: <DashboardLayout />,
         children: [
             {
                 path: 'manageusers',
-                element: <ManageUsers/>
+                element: <AdminRoute><ManageUsers /></AdminRoute>
+            },
+            {
+                path: 'addclass',
+                element: <InstructorRout><AddaClass/></InstructorRout>
             }
         ]
     }
