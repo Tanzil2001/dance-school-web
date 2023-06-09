@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import './Banner.css';
 
 import banner4 from '../../../assets/banner-1jpg.jpg' ;
-import banner1 from '../../../assets/banner-1jpg.png' ;
+// import banner1 from '../../../assets/banner-1jpg.png' ;
 import banner2 from '../../../assets/banner-2jpg.png' ;
 import banner3 from '../../../assets/cover-3jpg.png' ;
 import banner5 from '../../../assets/banner5jpg.jpg' ;
@@ -41,7 +41,7 @@ const Banner = () => {
                 onAutoplayTimeLeft={onAutoplayTimeLeft}
                 className="mySwiper  "
             >
-                <SwiperSlide><img src={banner1} alt="" /></SwiperSlide>
+                {/* <SwiperSlide><img src={banner1} alt="" /></SwiperSlide> */}
                 <SwiperSlide><img src={banner2} alt="" /></SwiperSlide>
                 <SwiperSlide><img src={banner3} alt="" /></SwiperSlide>
                 <SwiperSlide><img src={banner6} alt="" /></SwiperSlide>

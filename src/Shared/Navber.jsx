@@ -16,7 +16,7 @@ const Navber = () => {
     const navOptions = <>
         <li className="text-xl font-bold"><Link to="/">Home</Link></li>
         <li className="text-xl font-bold"><Link to="/">Instructors</Link></li>
-        <li className="text-xl font-bold"><Link to="/order/salad">Classes</Link></li>
+        <li className="text-xl font-bold"><Link to="/classes">Classes</Link></li>
         {
             user ? <>
                 <li className="text-xl font-bold"><Link to="/dashboard">Dashboard </Link></li>

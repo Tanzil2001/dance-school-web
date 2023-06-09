@@ -24,7 +24,7 @@ const DashboardLayout = () => {
                 <ul className="menu p-4 w-80 text-white ">
 
                     {isAdmin ? (
-                        <><li><NavLink to="/dashboard/manageusers">Manage Classes</NavLink>
+                        <><li><NavLink to="/dashboard/manageclasses">Manage Classes</NavLink>
                         </li>
                             <li><NavLink to="/dashboard/manageusers">Manage Users</NavLink>
                             </li></>
