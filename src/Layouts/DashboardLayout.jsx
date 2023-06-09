@@ -7,9 +7,7 @@ import useInstructor from '../hooks/useInstructor';
 
 const DashboardLayout = () => {
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
     const [isInstructor] = useInstructor();
-    console.log(isInstructor);
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -30,7 +28,7 @@ const DashboardLayout = () => {
                             </li></>
                     ) : isInstructor ? (
                         <><li><NavLink to="/dashboard/addclass">Add a Class</NavLink></li>
-                            <li><NavLink to="/dashboard/instructorhome">My Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myclass">My Classes</NavLink></li>
                         </>
                     ) : (
                         <><li><NavLink>My Selected Classes</NavLink></li>
