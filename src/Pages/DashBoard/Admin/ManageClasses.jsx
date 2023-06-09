@@ -80,27 +80,23 @@ const ManageClasses = () => {
                             <td>{cls.price}</td>
                             <th>
                                 {cls.status === 'approved' ? 'approved' : <button onClick={() => handleApproved(cls._id)} className="btn btn-ghost btn-xs">Approve</button>}
+                                {/* to do  bakir nam faki*/}
 
+                                <button className="btn btn-ghost btn-xs">Deny</button>
 
-
-
-                                <button className="btn" onClick={() => window.my_modal_1.showModal()}>Deny</button>
+                                <button className="btn" onClick={() => window.my_modal_1.showModal()}>Feedback</button>
                                 <dialog id="my_modal_1" className="modal">
                                     <form method="dialog" className="modal-box">
                                         <h3 className="font-bold text-lg">Hello!</h3>
                                         <textarea name="feedback" id="" cols="40" rows="5"></textarea>
                                         <div className="modal-action">
                                             {/* if there is a button in form, it will close the modal */}
-                                            <button onClick={() => handleFeedback(cls._id)} className="btn">Feedback</button>
+                                            <button onClick={() => handleFeedback(cls._id)} className="btn">submit</button>
                                             
                                         </div>
                                     </form>
                                 </dialog>
 
-
-
-
-                                <button className="btn btn-ghost btn-xs">feedback</button>
                             </th>
                         </tr>)
                     }

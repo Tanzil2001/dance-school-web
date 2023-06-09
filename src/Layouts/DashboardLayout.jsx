@@ -40,8 +40,6 @@ const DashboardLayout = () => {
                     <div className="divider"></div>
 
                     <li><NavLink to="/"><FaHome />Home</NavLink></li>
-                    <li><NavLink to="/menu"><FaHome />Our Menu</NavLink></li>
-                    <li><NavLink to="/order/salad"><FaHome />Order Food</NavLink></li>
                 </ul>
             </div>
         </div>

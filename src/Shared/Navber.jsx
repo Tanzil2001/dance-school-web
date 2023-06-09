@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import logo from '../assets/dance-logo-dark-1.webp';
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import useSelecedClass from "../hooks/useSelecedClass";
 
 
 const Navber = () => {
+    const [selectedCls] = useSelecedClass();
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
@@ -46,6 +48,7 @@ const Navber = () => {
                         {navOptions}
                     </ul>
                 </div>
+                <div > <p className="text-xl">{selectedCls.length}</p></div>
                 <img className="w-16 h-16 rounded-full" src={user?.photoURL} alt="" />
             </div>
         </>

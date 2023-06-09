@@ -1,14 +1,16 @@
 import React from 'react';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+// import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-import { useQuery } from '@tanstack/react-query';
+import useUsers from '../../hooks/useUsers';
+// import { useQuery } from '@tanstack/react-query';
 
 const ManageUsers = () => {
-    const [axiosSecure] = useAxiosSecure();
-    const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users')
-        return res.data;
-    });
+    // const [axiosSecure] = useAxiosSecure();
+    // const { data: users = [], refetch } = useQuery(['users'], async () => {
+    //     const res = await axiosSecure.get('/users')
+    //     return res.data;
+    // });
+    const [users] =useUsers();
 
     const handleAdmin = (user) => {
         console.log(user);
