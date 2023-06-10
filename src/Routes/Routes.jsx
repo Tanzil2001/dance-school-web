@@ -12,6 +12,11 @@ import AddaClass from "../Pages/DashBoard/Instructor/AddaClass";
 import ManageClasses from "../Pages/DashBoard/Admin/ManageClasses";
 import Classes from "../Pages/AllClasses/Classes";
 import MyClasses from "../Pages/DashBoard/Instructor/MyClasses";
+import AllInstructors from "../Pages/AllInstructors/AllInstructors";
+import MySelectedClasses from "../Pages/DashBoard/Students/MySelectedClasses";
+import MyEnrolledClasses from "../Pages/DashBoard/Students/MyEnrolledClasses";
+import PrivateRoute from "./PrivetRoute";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 // import AdminRoute from "./AdminRoute";
 
 
@@ -36,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: '/classes',
                 element: <Classes/>
+            },
+            {
+                path: '/instructors',
+                element: <AllInstructors/>
             }
         ]
     },
@@ -57,7 +66,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'myclass',
-                element: <MyClasses/>
+                element: <InstructorRout><MyClasses/></InstructorRout>
+            },
+            {
+                path: 'myselectedclasses',
+                element: <PrivateRoute><MySelectedClasses/></PrivateRoute>
+            },
+            {
+                path: 'myenrolledclasses',
+                element: <PrivateRoute><MyEnrolledClasses/></PrivateRoute>
+            },
+            {
+                path: 'payment',
+                element: <Payment/>
             }
             
         ]

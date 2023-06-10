@@ -38,27 +38,6 @@ const ManageClasses = () => {
                 }
             })
     };
-    // const handleDenied = (id) => {
-    //     console.log(id);
-    //     fetch(`http://localhost:5000/classes?id=${id}&status=denied`, {
-    //         method: 'PATCH'
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.modifiedCount) {
-    //                 refetch();
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: 'ok',
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 })
-
-    //             }
-    //         })
-    // };
-
 
     const handleDeny = (classId) => {
         setSelectedClassId(classId);
@@ -87,7 +66,7 @@ const ManageClasses = () => {
             refetch();
         } catch (error) {
             console.error(error);
-            //   setAlertMessage("An error occurred. Please try again.");
+    
         }
     };
 
@@ -150,52 +129,9 @@ const ManageClasses = () => {
                                     } className="btn  btn-success">Approve</button>
 
 
-                                    {/* <button onClick={() => handleDenied(cls._id)} disabled={
-                                        cls.status === "approved"
-                                            ? true
-                                            : cls.status === "denied"
-                                                ? true
-                                                : false
-                                    } className="btn  btn-error">Deny</button> */}
-
                                     <div>
-                                        {/* Open the modal using ID.showModal() method */}
-                                        {/* <button className="btn" onClick={() => document.getElementById("my_modal_1").showModal()}>Open Modal</button>
-                                    <dialog id="my_modal_1" className="modal">
-                                        <form method="dialog" className="modal-box">
-                                            <h3 className="font-bold text-lg">Hello!</h3>
-                                            <textarea name="" id="" cols="30" rows="5"></textarea>
-                                            <div className="modal-action">
-                                                <button className="btn" onClick={() => document.getElementById("my_modal_1").close()}>Close</button>
-                                            </div>
-                                        </form>
-                                    </dialog> */}
-                                        {/* <button className="btn" onClick={() => document.getElementById("my_modal_1").showModal()}>
-                                            Open Modal
-                                        </button>
-                                        <dialog id="my_modal_1" className="modal">
-                                            <form method="dialog" className="modal-box">
-                                                <h3 className="font-bold text-lg">Hello!</h3>
-                                                <textarea
-                                                    name="feedback"
-                                                    id="feedback"
-                                                    cols="30"
-                                                    rows="5"
-                                                    placeholder="Enter your feedback here"
-                                                    onChange={(e) => setFeedback(e.target.value)}
-                                                ></textarea>
-                                                <div className="modal-action">
-                                                    <button className="btn" onClick={() => handleFeedback(cls._id)}>
-                                                        Send Feedback
-                                                    </button>
-                                                    <button className="btn" onClick={() => document.getElementById("my_modal_1").close()}>
-                                                        Close
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </dialog> */}
                                         <button
-                                            className="btn btn-ghost btn-xs"
+                                            className="btn  btn-xs"
                                             onClick={() => handleDeny(cls._id)}
                                         >
                                             denyyyyyyyyy
