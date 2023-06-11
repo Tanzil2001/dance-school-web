@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><MyEnrolledClasses/></PrivateRoute>
             },
             {
-                path: 'payment',
+                path: 'payment/:id',
                 element: <Payment/>
             }
             

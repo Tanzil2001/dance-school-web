@@ -3,7 +3,7 @@ import useSelecedClass from '../../../hooks/useSelecedClass';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useUsers from '../../../hooks/useUsers';
+
 
 const MySelectedClasses = () => {
     const [selectedCls, refetch] = useSelecedClass();
@@ -40,7 +40,7 @@ const MySelectedClasses = () => {
     return (
         <div className="w-full">
             <div className="uppercase font-semibold text-2xl flex justify-between items-center mb-5">
-                <Link to="/dashboard/payment"><button className="btn btn-warning btn-sm">Pay</button></Link>
+                {/* <Link to="/dashboard/payment"><button className="btn btn-warning btn-sm">Pay</button></Link> */}
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -52,6 +52,7 @@ const MySelectedClasses = () => {
                             <th>Class Name</th>
                             <th>Price</th>
                             <th>Available Seats</th>
+                            <th>Payment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -73,6 +74,9 @@ const MySelectedClasses = () => {
                                 </td>
                                 <td>$ {slc.price}</td>
                                 <td>$ {slc.seats}</td>
+                                <td className="">
+                                    <Link to={`/dashboard/payment/${slc._id}`}><button  className="btn text-white ">Pay</button></Link>
+                                </td>
                                 <td className="">
                                     <button onClick={() => handleDelete(slc)} className="btn text-white bg-red-600"><FaTrashAlt /></button>
                                 </td>

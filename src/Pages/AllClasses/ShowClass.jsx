@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import useSelecedClass from '../../hooks/useSelecedClass';
 import useUsers from '../../hooks/useUsers';
 
 const ShowClass = ({ approvedCls }) => {
+    const [isClassSelected, setIsClassSelected] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
     const [, refetch] = useSelecedClass();
@@ -18,6 +20,8 @@ const ShowClass = ({ approvedCls }) => {
 
     const handleSelectClass = () => {
         if (user && user.email) {
+                setIsClassSelected(true);
+            
             const selectClass = {
                 classImage, className, email: user.email, instructorName, price, seats, classId: _id
             }
@@ -32,6 +36,7 @@ const ShowClass = ({ approvedCls }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+                        setIsClassSelected(true)
                         refetch();
                         Swal.fire({
                             position: 'top-end',
@@ -57,7 +62,9 @@ const ShowClass = ({ approvedCls }) => {
                 }
             })
         }
-    }
+    };
+
+
     return (
         <div className=" card card-compact w-96 bg-base-100 shadow-xl">
             <figure><img className='w-full h-[300px]' src={classImage} alt="Shoes" /></figure>
@@ -68,7 +75,7 @@ const ShowClass = ({ approvedCls }) => {
                 <p>{price}</p>
                 <div className="card-actions justify-end">
                     {
-                        findUser?.role === 'admin' || findUser?.role === 'instructor' ? <><button disabled={true}>Select</button></> : <><button onClick={() => handleSelectClass(approvedCls)} className="btn btn-primary">Select</button></>
+                        findUser?.role === 'admin' || findUser?.role === 'instructor' ? <><button disabled={true}>Select</button></> : <><button onClick={() => handleSelectClass(approvedCls)} disabled={isClassSelected} className="btn btn-primary">Select</button></>
                     }
                 </div>
             </div>

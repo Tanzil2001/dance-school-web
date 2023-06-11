@@ -10,6 +10,7 @@ const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
+
     const glassStyle = {
         backgroundColor: 'transparent',
         backdropFilter: 'blur(5px)',
@@ -27,7 +28,7 @@ const Register = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, image:data.photoURL }
+                        const savedUser = { name: data.name, email: data.email, image: data.photoURL }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -88,20 +89,20 @@ const Register = () => {
                                 required: true,
                                 minLength: 6,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                            })} placeholder="password" className="input input-bordered " />
+                            })} placeholder="password"  className="input input-bordered " />
                             {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                             {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                             {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
                         </div>
-                        {/* <div className="form-control">
+                        <div className="form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-xl">Confirm Password</span>
                             </label>
-                            <input type="password"  {...register("password", {
+                            <input type="password"  {...register("confirmPassword", {
                                 required: true,
                             })} placeholder="password" className="input input-bordered " />
-                          
-                        </div> */}
+                            {errors.confirmPassword && <span className="text-red-600">{errors.confirmPassword.message}</span>}
+                        </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary bg-transparent" type="submit" value="Sign Up" />
                         </div>

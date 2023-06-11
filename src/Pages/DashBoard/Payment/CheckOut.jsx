@@ -4,7 +4,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import './CheckOut.css'
 
-const CheckOut = ({ selectedCls, price }) => {
+const CheckOut = ({ selectedCls, price, classId }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -80,19 +80,16 @@ const CheckOut = ({ selectedCls, price }) => {
                 price,
                 date: new Date(),
                 quantity: selectedCls.length,
-                selectedClass: selectedCls.map(cls => cls._id),
-                enrolledClass: selectedCls.map(cls => cls.classId),
-                // menuItems: selectedCls.map(item => item.menuItemId),
-                // status: 'service pending',
-                // itemsName: selectedCls.map(item => item.name)
-
+                selectedClass: selectedCls._id,
+                enrolledClass: selectedCls.classId
             }
+
             axiosSecure.post('/payments', payment)
-                .then(res => {
+                .then((res) => {
                     if (res.data.insertResult.insertedId) {
-                        alert('done')
+                        alert('payment successful')
                     }
-                })
+                });
         }
 
     }
