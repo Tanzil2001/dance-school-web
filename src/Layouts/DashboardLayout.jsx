@@ -31,8 +31,11 @@ const DashboardLayout = () => {
                             <li><NavLink to="/dashboard/myclass">My Classes</NavLink></li>
                         </>
                     ) : (
-                        <><li><NavLink to="/dashboard/myselectedclasses">My Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/myenrolledclasses">My Enrolled Classes</NavLink></li></>
+                        <>
+                            <li><NavLink to="/dashboard/myselectedclasses">My Selected Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myenrolledclasses">My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/history"> Payment History</NavLink></li>
+                        </>
                     )}
 
                     <div className="divider"></div>

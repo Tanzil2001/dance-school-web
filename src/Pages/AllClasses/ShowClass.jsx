@@ -13,15 +13,15 @@ const ShowClass = ({ approvedCls }) => {
     const [, refetch] = useSelecedClass();
     const { user } = useContext(AuthContext);
     const [users] = useUsers();
-    const { classImage, className, instructorName, price, seats, _id } = approvedCls;
+    const { classImage, className, instructorName, price, seats, _id, totalStudent } = approvedCls;
 
 
     const findUser = users.find(us => us.email === user?.email)
 
     const handleSelectClass = () => {
         if (user && user.email) {
-                setIsClassSelected(true);
-            
+            setIsClassSelected(true);
+
             const selectClass = {
                 classImage, className, email: user.email, instructorName, price, seats, classId: _id
             }
@@ -66,16 +66,27 @@ const ShowClass = ({ approvedCls }) => {
 
 
     return (
-        <div className=" card card-compact w-96 bg-base-100 shadow-xl">
+        <div className={`card card-compact w-96 bg-base-100 shadow-xl ${seats === 0 ? 'bg-red-600' : 'bg-base-100'}`}>
             <figure><img className='w-full h-[300px]' src={classImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{className}</h2>
                 <p>{instructorName}</p>
                 <p>{seats}</p>
                 <p>{price}</p>
+                <p>{totalStudent}</p>
                 <div className="card-actions justify-end">
                     {
-                        findUser?.role === 'admin' || findUser?.role === 'instructor' ? <><button disabled={true}>Select</button></> : <><button onClick={() => handleSelectClass(approvedCls)} disabled={isClassSelected} className="btn btn-primary">Select</button></>
+                        findUser?.role === 'admin' || findUser?.role === 'instructor' ? (
+                            <button disabled={true}>Select</button>
+                        ) : (
+                            <button
+                                onClick={() => handleSelectClass(approvedCls)}
+                                disabled={seats === 0 || isClassSelected}
+                                className={`btn ${seats === 0 ? 'btn-disabled' : 'btn-primary'}`}
+                            >
+                                Select
+                            </button>
+                        )
                     }
                 </div>
             </div>

@@ -4,7 +4,8 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import './CheckOut.css'
 
-const CheckOut = ({ selectedCls, price, classId }) => {
+const CheckOut = ({ selectedCls, price }) => {
+    console.log(selectedCls);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -20,7 +21,6 @@ const CheckOut = ({ selectedCls, price, classId }) => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
                 .then(res => {
-                    console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
                 })
         }
@@ -76,6 +76,7 @@ const CheckOut = ({ selectedCls, price, classId }) => {
             setTransactionId(paymentIntent.id);
             const payment = {
                 email: user.email,
+                image: selectedCls.classImage,
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
@@ -86,6 +87,10 @@ const CheckOut = ({ selectedCls, price, classId }) => {
 
             axiosSecure.post('/payments', payment)
                 .then((res) => {
+                    axiosSecure.patch(`/totalStudent/${selectedCls?.classId}`)
+                    .then(res => {
+                        console.log(res.data);
+                    })
                     if (res.data.insertResult.insertedId) {
                         alert('payment successful')
                     }

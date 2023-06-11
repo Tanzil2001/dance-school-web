@@ -40,7 +40,6 @@ const MySelectedClasses = () => {
     return (
         <div className="w-full">
             <div className="uppercase font-semibold text-2xl flex justify-between items-center mb-5">
-                {/* <Link to="/dashboard/payment"><button className="btn btn-warning btn-sm">Pay</button></Link> */}
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -75,7 +74,7 @@ const MySelectedClasses = () => {
                                 <td>$ {slc.price}</td>
                                 <td>$ {slc.seats}</td>
                                 <td className="">
-                                    <Link to={`/dashboard/payment/${slc._id}`}><button  className="btn text-white ">Pay</button></Link>
+                                    <Link to={`/dashboard/payment/${slc._id}`}><button  className="btn bg-black hover:bg-slate-700 text-white ">Pay</button></Link>
                                 </td>
                                 <td className="">
                                     <button onClick={() => handleDelete(slc)} className="btn text-white bg-red-600"><FaTrashAlt /></button>
