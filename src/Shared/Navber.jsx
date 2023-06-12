@@ -3,6 +3,7 @@ import logo from '../assets/dance-logo-dark-1.webp';
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useSelecedClass from "../hooks/useSelecedClass";
+import { FaShoppingCart } from "react-icons/fa";
 
 
 const Navber = () => {
@@ -49,10 +50,10 @@ const Navber = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <div > <p className="text-xl">{selectedCls.length}</p></div>
+                <div className="mx-3" >  <Link to="/dashboard"><p className="text-xl">{selectedCls.length}</p><FaShoppingCart/>  </Link></div>
                 <img className="w-16 h-16 rounded-full" src={user?.photoURL} alt="" />
 
-                <button className="btn btn-primary" onClick={()=> setDark(!dark)}>{dark ? 'dark': 'light'}</button>
+                <button className="btn btn-primary" onClick={() => setDark(!dark)}>{dark ? 'dark' : 'light'}</button>
             </div>
         </>
     );

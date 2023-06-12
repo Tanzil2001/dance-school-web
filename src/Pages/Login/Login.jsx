@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import cover1 from '../../assets/signup-cover.avif';
+import cover1 from '../../assets/signup-cover-2.jpg';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 
@@ -45,7 +45,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 const savedUser = { name: loggedUser.displayName, email: loggedUser.email }
                 console.log(loggedUser);
-                fetch('https://a-dance-school-server-tanzil2001.vercel.app/users', {
+                fetch('https://a-dance-school-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -97,7 +97,7 @@ const Login = () => {
                     <p className='text-xl font-bold'>Are You New Here? please <Link className='text-blue-600' to="/signup">Register</Link></p>
                     <div className="divider"></div>
                     <div className="text-center w-full my-4">
-                        <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline">
+                        <button onClick={handleGoogleSignIn} className="btn btn-circle ">
                             <FaGoogle />
                         </button>
                     </div>

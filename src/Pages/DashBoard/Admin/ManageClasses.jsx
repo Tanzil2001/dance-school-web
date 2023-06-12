@@ -20,7 +20,7 @@ const ManageClasses = () => {
 
     const handleApproved = (id) => {
         console.log(id);
-        fetch(`https://a-dance-school-server-tanzil2001.vercel.app/classes?id=${id}&status=approved`, {
+        fetch(`https://a-dance-school-server.vercel.app/classes?id=${id}&status=approved`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -66,7 +66,7 @@ const ManageClasses = () => {
             refetch();
         } catch (error) {
             console.error(error);
-    
+
         }
     };
 
@@ -119,7 +119,7 @@ const ManageClasses = () => {
                                 <td>{cls.instructorEmail}</td>
                                 <td>{cls.seats}</td>
                                 <td>{cls.price}</td>
-                                <th>
+                                <th className='flex items-center gap-3'>
                                     <button onClick={() => handleApproved(cls._id)} disabled={
                                         cls.status === "approved"
                                             ? true
@@ -131,10 +131,17 @@ const ManageClasses = () => {
 
                                     <div>
                                         <button
-                                            className="btn  btn-xs"
+                                            disabled={
+                                                cls.status === "approved"
+                                                    ? true
+                                                    : cls.status === "denied"
+                                                        ? true
+                                                        : false
+                                            }
+                                            className="btn  btn-success"
                                             onClick={() => handleDeny(cls._id)}
                                         >
-                                            denyyyyyyyyy
+                                            deny
                                         </button>
 
                                     </div>

@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updatedclass/:id',
                 element: <UpdateClass/>,
-                loader: ({params})=>fetch(`https://a-dance-school-server-tanzil2001.vercel.app/updatedClass/${params.id}`)
+                loader: ({params})=>fetch(`https://a-dance-school-server.vercel.app/updatedClass/${params.id}`)
             },
             {
                 path: 'myselectedclasses',

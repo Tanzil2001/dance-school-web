@@ -9,7 +9,7 @@ const ManageUsers = () => {
 
     const handleAdmin = (user) => {
         console.log(user);
-        fetch(`https://a-dance-school-server-tanzil2001.vercel.app/users/admin/${user._id}`, {
+        fetch(`https://a-dance-school-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -29,7 +29,7 @@ const ManageUsers = () => {
     };
 
     const handleInstructor = (user) => {
-        fetch(`https://a-dance-school-server-tanzil2001.vercel.app/users/instructor/${user._id}`, {
+        fetch(`https://a-dance-school-server.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -67,10 +67,10 @@ const ManageUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role === 'admin' ? 'admin' : <button onClick={() => handleAdmin(user)} className="btn btn-xs bg-black text-white hover:bg-blue-600">
+                                <td className='flex items-center gap-3'>{user.role === 'admin' ? <button className='btn btn-disabled'>admin</button> : <button onClick={() => handleAdmin(user)} className="btn btn-success">
                                     Make Admin
                                 </button>}
-                                    {user.role === 'instructor' ? 'instructor' : <button onClick={() => handleInstructor(user)} className="btn ml-5 btn-xs bg-black text-white hover:bg-blue-600">Make Instructor</button>}
+                                    {user.role === 'instructor' ? <button className='btn btn-disabled'>instructor</button> : <button onClick={() => handleInstructor(user)} className="btn btn-success">Make Instructor</button>}
 
                                 </td>
                             </tr>)

@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
     const { logOut } = useContext(AuthContext);
     const axiosSecure = axios.create({
-        baseURL: 'https://a-dance-school-server-tanzil2001.vercel.app'
+        baseURL: 'https://a-dance-school-server.vercel.app'
     });
 
     useEffect(() => {

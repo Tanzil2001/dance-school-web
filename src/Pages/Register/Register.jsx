@@ -29,7 +29,7 @@ const Register = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const savedUser = { name: data.name, email: data.email, image: data.photoURL }
-                        fetch('https://a-dance-school-server-tanzil2001.vercel.app/users', {
+                        fetch('https://a-dance-school-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
