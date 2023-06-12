@@ -9,6 +9,7 @@ const PopularClasses = () => {
         return res.data;
     })
     return (
+        
         <div className='p-3 mt-32'>
             <p className='text-5xl my-5 font-serif font-bold text-center'>All Popular Classes</p>
             <div className="text-blue-600 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
