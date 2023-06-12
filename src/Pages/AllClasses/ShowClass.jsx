@@ -13,7 +13,7 @@ const ShowClass = ({ approvedCls }) => {
     const [, refetch] = useSelecedClass();
     const { user } = useContext(AuthContext);
     const [users] = useUsers();
-    const { classImage, className, instructorName, price, seats, _id, totalStudent } = approvedCls;
+    const { classImage, className, price, seats, _id, totalStudent } = approvedCls;
 
 
     const findUser = users.find(us => us.email === user?.email)
@@ -66,14 +66,13 @@ const ShowClass = ({ approvedCls }) => {
 
 
     return (
-        <div className={`card card-compact w-96 bg-base-100 shadow-xl ${seats === 0 ? 'bg-red-600' : 'bg-base-100'}`}>
+        <div className={`card card-compact w-96 bg-base-100 text-blue-600 shadow-xl ${seats === 0 ? 'bg-red-600' : 'bg-base-100'}`}>
             <figure><img className='w-full h-[300px]' src={classImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{className}</h2>
-                <p>{instructorName}</p>
-                <p>{seats}</p>
-                <p>{price}</p>
-                <p>{totalStudent}</p>
+                <p className='text-xl'>Available Seats : <span className='text-orange-700 text-2xl'>{seats}</span> </p>
+                <p className='text-xl'>Price: <span className='text-orange-700 text-2xl'>$ {price}</span> </p>
+                <p className='text-xl'>Total Stu: <span className='text-orange-700 text-2xl'>{totalStudent}</span> </p>
                 <div className="card-actions justify-end">
                     {
                         findUser?.role === 'admin' || findUser?.role === 'instructor' ? (

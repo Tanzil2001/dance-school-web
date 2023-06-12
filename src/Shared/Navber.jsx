@@ -6,8 +6,9 @@ import useSelecedClass from "../hooks/useSelecedClass";
 
 
 const Navber = () => {
+
     const [selectedCls] = useSelecedClass();
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, dark, setDark } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -31,7 +32,7 @@ const Navber = () => {
 
     return (
         <>
-            <div className="navbar mt-10 flex items-center justify-between fixed z-10 bg-opacity-0 max-w-screen-2xl md:max-w-screen-xl md:ml-40 bg-black text-white">
+            <div className="navbar mt-10 flex items-center justify-between fixed z-10 bg-opacity-20 rounded-full px-5 max-w-screen-2xl md:max-w-screen-xl md:ml-40 bg-black text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -50,6 +51,8 @@ const Navber = () => {
                 </div>
                 <div > <p className="text-xl">{selectedCls.length}</p></div>
                 <img className="w-16 h-16 rounded-full" src={user?.photoURL} alt="" />
+
+                <button className="btn btn-primary" onClick={()=> setDark(!dark)}>{dark ? 'dark': 'light'}</button>
             </div>
         </>
     );
