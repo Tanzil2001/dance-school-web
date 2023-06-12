@@ -13,7 +13,7 @@ const ShowClass = ({ approvedCls }) => {
     const [, refetch] = useSelecedClass();
     const { user } = useContext(AuthContext);
     const [users] = useUsers();
-    const { classImage, className, price, seats, _id, totalStudent } = approvedCls;
+    const { classImage, className, instructorName, price, seats, _id, totalStudent } = approvedCls;
 
 
     const findUser = users.find(us => us.email === user?.email)

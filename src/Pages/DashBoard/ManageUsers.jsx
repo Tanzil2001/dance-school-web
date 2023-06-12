@@ -5,7 +5,7 @@ import useUsers from '../../hooks/useUsers';
 
 const ManageUsers = () => {
    
-    const [users] =useUsers();
+    const [users, refetch] =useUsers();
 
     const handleAdmin = (user) => {
         console.log(user);

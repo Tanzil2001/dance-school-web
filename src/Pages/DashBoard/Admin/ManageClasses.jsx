@@ -165,8 +165,8 @@ const ManageClasses = () => {
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                 />
-                <button onClick={handleFeedbackSubmit}>Submit Feedback</button>
-                <button onClick={handleModalClose}>Cancel</button>
+                <button className='btn btn-success mr-3' onClick={handleFeedbackSubmit}>Submit Feedback</button>
+                <button className='btn btn-error' onClick={handleModalClose}>Cancel</button>
             </Modal>
         </>
     );
