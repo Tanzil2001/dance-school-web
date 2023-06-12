@@ -20,7 +20,7 @@ const ManageClasses = () => {
 
     const handleApproved = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/classes?id=${id}&status=approved`, {
+        fetch(`https://a-dance-school-server-tanzil2001.vercel.app/classes?id=${id}&status=approved`, {
             method: 'PATCH'
         })
             .then(res => res.json())

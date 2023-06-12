@@ -18,6 +18,7 @@ import MyEnrolledClasses from "../Pages/DashBoard/Students/MyEnrolledClasses";
 import PrivateRoute from "./PrivetRoute";
 import Payment from "../Pages/DashBoard/Payment/Payment";
 import PaymentHistory from "../Pages/DashBoard/Students/PaymentHistory";
+import UpdateClass from "../Pages/DashBoard/Instructor/UpdateClass";
 // import AdminRoute from "./AdminRoute";
 
 
@@ -68,6 +69,11 @@ export const router = createBrowserRouter([
             {
                 path: 'myclass',
                 element: <InstructorRout><MyClasses/></InstructorRout>
+            },
+            {
+                path: 'updatedclass/:id',
+                element: <UpdateClass/>,
+                loader: ({params})=>fetch(`https://a-dance-school-server-tanzil2001.vercel.app/updatedClass/${params.id}`)
             },
             {
                 path: 'myselectedclasses',

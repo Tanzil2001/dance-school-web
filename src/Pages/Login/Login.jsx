@@ -1,18 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cover1 from '../../assets/signup-cover.avif';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 
 
 const Login = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { signIn, googleSignIn } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
 
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/'
+
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const glassStyle = {
         backgroundColor: 'transparent',
@@ -39,7 +45,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 const savedUser = { name: loggedUser.displayName, email: loggedUser.email }
                 console.log(loggedUser);
-                fetch('http://localhost:5000/users', {
+                fetch('https://a-dance-school-server-tanzil2001.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -69,13 +75,20 @@ const Login = () => {
                             {errors.email && <span className="text-red-600">Email is required</span>}
                         </div>
 
-                        <div className="form-control">
+                        <div className="relative form-control">
                             <label className="label">
                                 <span className="label-text font-bold text-xl">Password</span>
                             </label>
-                            <input type="password"  {...register("password", {
+                            <input type={showPassword ? 'text' : 'password'} {...register("password", {
                                 required: true,
                             })} placeholder="password" className="input input-bordered " />
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                                className="absolute inset-y-0 top-10 right-0 flex items-center px-3"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary bg-transparent" type="submit" value="Login" />

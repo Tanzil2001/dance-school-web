@@ -26,7 +26,7 @@ const ShowClass = ({ approvedCls }) => {
                 classImage, className, email: user.email, instructorName, price, seats, classId: _id
             }
 
-            fetch('http://localhost:5000/selectedClass', {
+            fetch('https://a-dance-school-server-tanzil2001.vercel.app/selectedClass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
